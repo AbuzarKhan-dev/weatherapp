@@ -1,9 +1,8 @@
-import {FaCloudShowersHeavy} from 'react-icons/fa'
-
-const WeatherImg = () => {
+const WeatherImg = ({img}) => {
     return(
         <div className='weather_img'>
-        <FaCloudShowersHeavy size='2.5em' color='#fff' />
+        <h2 >{img?.temperature} C<sup>o</sup></h2>
+        <img src = {img?.weather_icons} alt='NO'/>
         </div>
     )
 }

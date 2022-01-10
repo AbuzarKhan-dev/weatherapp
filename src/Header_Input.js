@@ -1,11 +1,15 @@
 import WeatherImg from "./Image";
-import CityName from "./City-Name";
+import CityName from "./City_Name";
 import {BsSearch} from 'react-icons/bs';
 import {useState} from 'react';
+import { useSelector } from "react-redux";
 
 
-const HeaderInput = ({Pack,onSearch}) => {
+const HeaderInput = ({onSearch}) => {
        const [text,settext] = useState('');
+       const Pack= useSelector(state => state.getData)
+       
+
 
        const submit = () => {
            onSearch(text)
@@ -21,8 +25,8 @@ const HeaderInput = ({Pack,onSearch}) => {
           <input className='input' type = 'text' value={text} onChange = {(e) => settext(e.target.value)} />
           <button className='search_btn' onClick={submit} ><BsSearch/></button>
           </div> 
-          {<CityName location={Pack?.location}/>}
-          <WeatherImg /> 
+          {<CityName loc={Pack.data?.location || 'No'}/>}
+          {<WeatherImg img={Pack.data?.current || 'No'}/>} 
       </div> 
       </div>
     
